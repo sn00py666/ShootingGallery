@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -52,5 +53,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("финал");
         fr.StartFinal(sm.score);
         gameObject.SetActive(false);
+    }
+    public void Test()
+    {
+        Debug.Log("debug");
     }
 }

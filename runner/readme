@@ -1,0 +1,12 @@
+Данная программа служит для автозапуска программы для калибровки и самой игры Тир
+
+Запускается программа через dist/runner.exe
+так же в папке dist лежит файл paths.txt
+В paths.txt лежат 2 пути до файлов 
+1 - путь до программы калибровки (именно .exe)
+2 - путь до игры ТИР
+ПРИМЕР:
+C:\Program Files (x86)\SHOOTING-SOFT.RU\Shooting Trainer\SHOOTING TRAINER.exe
+C:\Users\ghkne\OneDrive\Рабочий стол\Shooting gallery\Shooting gallery.exe
+
+Далее необходимо поставить dist/runner.exe на автозапуск винды

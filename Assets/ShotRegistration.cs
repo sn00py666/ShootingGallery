@@ -13,6 +13,10 @@ public class Target : MonoBehaviour
     private GameManager gm;
     private ScoreManager sm;
 
+    private bool canShoot = true; // Можно ли стрелять?
+    public float shootDelay = 1.0f; // Время задержки между выстрелами
+
+
     // Проверяем, есть ли объекты для обработки
     void Start()
     {
@@ -47,6 +51,10 @@ public class Target : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (!canShoot) return; // Если стрельба заблокирована — выходим
+
+        canShoot = false; // Блокируем стрельбу
+
         // Определяем место нажатия
         Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         clickPosition.z = 0; // Убираем глубину для 2D
@@ -63,15 +71,18 @@ public class Target : MonoBehaviour
             // Создаем кружок на месте клика
             Instantiate(redCirclePrefab, clickPosition, Quaternion.identity, transform);
         }
+
         if (gm.bulletCountNow == 0)
         {
-            //gm.anim.SetTrigger("PlayAnimAfterShot");
-            gm.anim.SetTrigger("NT");
+            gm.anim.SetTrigger("PlayAnimAfterShot");
+            //gm.anim.SetTrigger("NT");
             Debug.Log("anim");
 
             //gm.StopAnim();
 
         }
+
+        StartCoroutine(ShootCooldown());
 
     }
 
@@ -95,4 +106,11 @@ public class Target : MonoBehaviour
         gm.bulletCountNow--;
         return -1;
     }
+
+    private IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(shootDelay); // Ждём заданное время
+        canShoot = true; // Разблокируем стрельбу
+    }
+
 }

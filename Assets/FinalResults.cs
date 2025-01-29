@@ -13,7 +13,7 @@ public class FinalResults : MonoBehaviour
     public Sprite Res20_39;
     public Sprite Res40_50;
 
-    public float TimeFinalScene = 5;
+    public float TimeFinalScene = 10;
     public string sceneName = "Start";
 
     // Start is called before the first frame update
